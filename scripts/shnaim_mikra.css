@@ -1,0 +1,32 @@
+﻿body {
+	direction: rtl;
+	text-align: right;
+	}
+.mikra {
+	font-size: 1em;
+	}
+.mikra2 {
+	font-size: 0.9em;
+	}
+.targum {
+	font-size: 0.75em;
+	}
+.aliya {
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+	}
+.num {
+	font-weight: bold;
+	}
+.parsha {
+	font-weight: bold;
+	}
+.copyright {
+	direction: rtl;
+	text-align: right;
+	font-size: 0.5em;
+	}

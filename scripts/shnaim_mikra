@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Copyright (c) 2018 Y Paritcher
+#
+
+retext(){
+
+truncate -s-1 "$1"
+
+sed -i -e 's/\r//' -e 's`<span style='"'"'color:RGB([0-9]\+,[0-9]\+,[0-9]\+);'"'"'>`<span>`' "$1"
+
+sed -Ei -e '/^\r/d' -e '/^<script/d' -e '/<!--ADDITIONAL_HEAD-->/d' -e '/^<!--SOURCE_FILE/d' -e '/^<!--IgnoredList:-->/d' -e '/^<!--DAILY_LEARNING_PARAMS=-->/d' -e 's/windows-1255/UTF-8/' -e '/<head>/d' -e '/<\/head>/d' -e '/<center><span style="color:#BE32BE;"><span style="font-weight:bold; font-size:18px; ">/d' -e '/<span style="color:#000000;"><span style="font-weight:bold; font-size:18px; ">/d' -e '/<span style="color:#000000;"><span style="font-weight:bold; font-size:18px; ">/d' -e '/BR><\/span><\/CENTER>/d' -e '/<span style="font-weight:bold; font-size:52px; ">/d' -e '/<body/d' -e 's`<span style="color:#BE32BE;"><small>(.*)</small></center></span></span></span></span><CENTER><p></p>`<p id="copyright">\1</p>`' -e 's`<small></small>``g' -e '/^<style/,/^<\/style>/d' -e 's`<title>.+(מקרא ותרגום.+)</title>` <meta name="author" content="\1">`g' -e '/^<HR><BR><span style="font-size:28px; ">/,/<p><\/p>/d' -e 's`<span style="color=#3377cc; font-size:80%; font-family:David"><span style="background-color:#5780c4; color:#ffffff; "><b><small>&nbsp;(<span style='"'"'font-family:Ezra SIL SR;'"'"'>)*מ(</span>)*&nbsp;</b></small></span>&nbsp;<span>(<span style='"'"'font-family:Ezra SIL SR;'"'"'>)*`</span>\n<span class="mikra2">`' -e 's`</span>  <span style="color=#3377cc; font-size:80%; font-family:David"><span style="background-color:#a155aa; color:#ffffff; "><b><small>&nbsp;ת&nbsp;</b></small></span>&nbsp;<span style='"'"'color:RGB\(122,13,134\);'"'"'>`\n<span class="targum">`' -e 's`</span> <br><br>`</p>`' -e 's`<B></B>``' -e 's`<a name="[^"]*"></a><span style="font-size:27px; ">``' -e 's`<B><span>(\{[^\}]+\})</span></B>&nbsp;</span>(<span style='"'"'font-family:Ezra SIL SR;'"'"'>)*`<p><span class="num">\1</span>\n<span class="mikra">`' -e 's`<B><U><span><u>([^<]+)</u></span><BR></U></B></span></center><br><hr><br>(<p></p>)*`<title>\1</title>\n</head>\n<body>\n<p id="start" class="chapter">\1</p>`' -e 's`(<html)>`\1 DIR="RTL" LANG="HE">\n<head>`' -e 's`<b><small><small style='"'"'background-color:#7694DA; color:white;'"'"'>&nbsp([^&]*)&nbsp</small></small>&nbsp</b>(<span style='"'"'font-family:Ezra SIL SR;'"'"'>)*`<p id="\1" class="chapter">\1</p>`' -e '/^<\!--\$~-->/,/^<\!--\$\!-->/d' -e 's`<BR>``' -e '/^<!/d' -e '/<div/d' -e 's`<B>(\([^\)]+\))</B>`<span class="parsha">\1</span>`' -e 's`id="([^ "]+)[^"]*(")`id="\1\2`' "$1"
+
+sed -Ei '/./{H;$!d} ; x ; s`(<p><span class="num">\{[^<]+\}</span>\n<span class="mikra">)(<p id="[^"]+" class="chapter">[^<]+</p>)`\2\n\1`' "$1"
+
+sed -Ei '/./{H;$!d} ; x ; s`\n (</span>)`\1`' "$1"
+
+}
+
+convertebook(){
+
+	filename="$1"
+	base="$(basename $filename)"
+	meta="$(ebook-meta $filename)"
+	output="$(grep 'Title               : ' <<< "$meta" | sed -e 's/Title               : //' -e 's/ /_/g')"
+	fileout="$(echo $1 | sed 's#../intermediate/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../output/kindle/\1/#' )"
+	if [[ ! -d "$fileout" ]]
+		then mkdir -p $fileout
+	fi
+	if [[ -n "$(echo $base | grep -e '_part_')" ]]
+		then ebook-convert "$filename" "$fileout$output.azw3" --keep-ligatures --subset-embedded-fonts --extra-css "./shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16"
+	fi
+}
+
+
+for i in ../sorted/תורה/*/*_-_מקרא_ותרגום*/*.html; do
+	out="$(echo $i | sed 's#../sorted/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../intermediate/\1/\2#' )"
+	if [[ ! -d $(dirname "$out") ]]
+		then mkdir -p "$(dirname $out)"
+	fi
+	if [[ ! -e "$out" ]] || [[ "$i" -nt "$out" ]] || [[ 1 ]]
+		then iconv -f WINDOWS-1255 -o "$out" "$i"
+		retext $out
+	fi
+done
+
+for q in ../intermediate/מקרא_ותרגום*/*.html; do
+	convertebook $q
+done
