@@ -7,13 +7,13 @@ Currently only shnaim mikra was converted.
 
 Please file an issue if there are any mistakes or if you need a different format or sefer.
 
+## Ebooks
+To download just the finished ebooks [click on releases](https://github.com/yparitcher/kindle-seforim/releases/latest).
+
 ## TODO
 - add epub support.
 - embed hebrew font for devices with a bad default.
-- add more seform.
-
-## Ebooks
-To download just the finished ebooks look in the output folder.
+- add more seforim.
 
 ## Dependency
 to format the seforim kindle-seforim requires:
