@@ -2,7 +2,8 @@
 kindle-seforim is a collection of seforim in kindle ebook format, based on [toratemetfreeware](http://www.toratemetfreeware.com).
 
 This is a work in progress so there will be updates and changes coming.
-currently only shnaim mikra was converted
+
+Currently only shnaim mikra was converted.
 
 ## Ebooks
 To download just the finished ebooks look in the output folder.
@@ -33,5 +34,7 @@ Thank you
 
 ## License
 kindle-seforim is Copyright (c) 2018 [Yparitcher](https://github.com/yparitcher)
+
 ebooks licensed under [CC BY-NC-SA 2.5](https://creativecommons.org/licenses/by-nc-sa/2.5/legalcode)
+
 scripts source code licensed under [The MIT License (MIT)](http://opensource.org/licenses/mit-license.php)
