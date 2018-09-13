@@ -5,6 +5,13 @@ This is a work in progress so there will be updates and changes coming.
 
 Currently only shnaim mikra was converted.
 
+Please file an issue if there are any mistakes or if you need a different format or sefer.
+
+## TODO
+- add epub support.
+- embed hebrew font for devices with a bad default.
+- add more seform.
+
 ## Ebooks
 To download just the finished ebooks look in the output folder.
 
