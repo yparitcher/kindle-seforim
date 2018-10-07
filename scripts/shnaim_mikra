@@ -28,7 +28,7 @@ convertebook(){
 		then mkdir -p $fileout
 	fi
 	if [[ -n "$(echo $base | grep -e '_part_')" ]]
-		then ebook-convert "$filename" "$fileout$output.azw3" --keep-ligatures --subset-embedded-fonts --extra-css "./shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16"
+		then ebook-convert "$filename" "$fileout$output.azw3" --subset-embedded-fonts --extra-css "./shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16"
 	fi
 }
 
