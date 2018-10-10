@@ -31,10 +31,21 @@ convertebook(){
 	if [[ ! -d "$fileout2" ]]
 		then mkdir -p $fileout2
 	fi
+	fileout3="$(echo $1 | sed 's#../intermediate/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../output/epub/\1/#' )"
+	if [[ ! -d "$fileout3" ]]
+		then mkdir -p $fileout3
+	fi
+	fileout4="$(echo $1 | sed 's#../intermediate/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../output/epub_SBL_font/\1/#' )"
+	if [[ ! -d "$fileout4" ]]
+		then mkdir -p $fileout4
+	fi
 
 	if [[ -n "$(echo $base | grep -e '_part_')" ]]
-		then ebook-convert "$filename" "$fileout$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16"
-		ebook-convert "$filename" "$fileout2$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --embed-font-family "SBL Hebrew"
+		then ebook-convert "$filename" "$fileout$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" &
+		ebook-convert "$filename" "$fileout2$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --embed-font-family "SBL Hebrew" &
+		ebook-convert "$filename" "$fileout3$output.epub" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --no-default-epub-cover &
+		ebook-convert "$filename" "$fileout4$output.epub" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --embed-font-family "SBL Hebrew" --no-default-epub-cover &
+		wait
 	fi
 }
 

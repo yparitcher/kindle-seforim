@@ -7,6 +7,7 @@ fi
 cd $output
 for d in */; do
 	cd $d
-	zip -Tr "../../releases/$(basename $d)" .
+	zip -Tr "../../releases/$(basename $d)" . &
 	cd ..
 done
+wait

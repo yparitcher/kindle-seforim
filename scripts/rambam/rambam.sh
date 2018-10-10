@@ -5,6 +5,8 @@ scripts="./scripts/rambam"
 source="./Orayta-Books/BooksSrc/050_rmbm"
 baseout="./output/kindle/rambam"
 fontbaseout="./output/kindle_SBL_font/rambam"
+epubbaseout="./output/epub/rambam"
+epubfontbaseout="./output/epub_SBL_font/rambam"
 
 parser() {
 	sed -e 's#{{[^{}]\+}}##g' -e 's#{##g' -e 's#}##g' -e 's#<TRIM>##g' -e 's#  # #g' -e 's#  # #g' -e 's#<BR><HR><BR>#\n#g' $1 | $scripts/rambam.awk > $intermediate/$(basename $1);
@@ -26,9 +28,19 @@ convertsefer() {
 	if [[ ! -d "$fileout2" ]]
 		then mkdir -p $fileout2
 	fi
-	ebook-convert "$filename" "$fileout/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]'
-	ebook-convert "$filename" "$fileout2/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]' --embed-font-family "SBL Hebrew" 
-
+	fileout3="$epubbaseout/$3"
+	if [[ ! -d "$fileout3" ]]
+		then mkdir -p $fileout3
+	fi
+	fileout4="$epubfontbaseout/$3"
+	if [[ ! -d "$fileout4" ]]
+		then mkdir -p $fileout4
+	fi
+	ebook-convert "$filename" "$fileout/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]' &
+	ebook-convert "$filename" "$fileout2/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]' --embed-font-family "SBL Hebrew" &
+	ebook-convert "$filename" "$fileout3/$output.epub" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]' --no-default-epub-cover &
+	ebook-convert "$filename" "$fileout4/$output.epub" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[@class="sefer"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[@class="sefert"]' --level2-toc '//*[@class="halachost"]' --level3-toc '//*[@class="perekt"]' --embed-font-family "SBL Hebrew" --no-default-epub-cover &
+	wait
 }
 
 convertthreechapter() {
@@ -43,9 +55,19 @@ convertthreechapter() {
 	if [[ ! -d "$fileout2" ]]
 		then mkdir -p $fileout2
 	fi
-	ebook-convert "$filename" "$fileout/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]'
-	ebook-convert "$filename" "$fileout2/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]' --embed-font-family "SBL Hebrew" 
-
+	fileout3="$epubbaseout/$2"
+	if [[ ! -d "$fileout3" ]]
+		then mkdir -p $fileout3
+	fi
+	fileout4="$epubfontbaseout/$2"
+	if [[ ! -d "$fileout4" ]]
+		then mkdir -p $fileout4
+	fi
+	ebook-convert "$filename" "$fileout/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]' &
+	ebook-convert "$filename" "$fileout2/$output.azw3" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]' --embed-font-family "SBL Hebrew" &
+	ebook-convert "$filename" "$fileout3/$output.epub" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]' --no-default-epub-cover &
+	ebook-convert "$filename" "$fileout4/$output.epub" --subset-embedded-fonts --extra-css "$scripts/rambam.css" --chapter-mark "rule" --start-reading-at '//*[name()="h1" or name()="h2" or name()="h3"]' --language "he" --base-font-size "16" --title "$title" --authors 'רמב"ם' --level1-toc '//*[name()="h1" or name()="h2" or name()="h3"]' --embed-font-family "SBL Hebrew" --no-default-epub-cover &
+	wait
 }
 
 convertfont() {

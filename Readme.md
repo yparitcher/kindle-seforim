@@ -1,5 +1,5 @@
 # kindle-seforim
-kindle-seforim is a collection of seforim in kindle ebook format, based on [toratemetfreeware](http://www.toratemetfreeware.com) and [Orayta-Books](https://github.com/MosheWagner/Orayta-Books).
+kindle-seforim is a collection of seforim in kindle ebook format, and in epub format, based on [toratemetfreeware](http://www.toratemetfreeware.com) and [Orayta-Books](https://github.com/MosheWagner/Orayta-Books).
 
 This is a work in progress so there will be updates and changes coming.
 
@@ -9,11 +9,10 @@ Please file an issue if there are any mistakes or if you need a different format
 To download just the finished ebooks [click on releases](https://github.com/yparitcher/kindle-seforim/releases/latest). to use the embedded font make sure that `use publisher font` is set to on in your kindle
 
 ## Status
-- Shnaim mikra
+- Shnaim Mikra
 - Rambam
 
 ## TODO
-- add epub support.
 - add more seforim.
 - add makefile
 
