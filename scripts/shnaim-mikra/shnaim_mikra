@@ -27,8 +27,29 @@ convertebook(){
 	if [[ ! -d "$fileout" ]]
 		then mkdir -p $fileout
 	fi
+	fileout2="$(echo $1 | sed 's#../intermediate/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../output/kindle_SBL_font/\1/#' )"
+	if [[ ! -d "$fileout2" ]]
+		then mkdir -p $fileout2
+	fi
+
 	if [[ -n "$(echo $base | grep -e '_part_')" ]]
 		then ebook-convert "$filename" "$fileout$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16"
+		ebook-convert "$filename" "$fileout2$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --embed-font-family "SBL Hebrew"
+	fi
+}
+
+convertebookfont(){
+
+	filename="$1"
+	base="$(basename $filename)"
+	meta="$(ebook-meta $filename)"
+	output="$(grep 'Title               : ' <<< "$meta" | sed -e 's/Title               : //' -e 's/ /_/g')"
+	fileout="$(echo $1 | sed 's#../intermediate/.*\(מקרא_ותרגום[^/]*\)/\(.*\.html\)#../output/kindle_SBL_font/\1/#' )"
+	if [[ ! -d "$fileout" ]]
+		then mkdir -p $fileout
+	fi
+	if [[ -n "$(echo $base | grep -e '_part_')" ]]
+		then ebook-convert "$filename" "$fileout$output.azw3" --subset-embedded-fonts --extra-css "./shnaim-mikra/shnaim_mikra.css" --chapter-mark "rule" --start-reading-at '//*[@id="start"]' --language "he" --base-font-size "16" --embed-font-family "SBL Hebrew"
 	fi
 }
 
