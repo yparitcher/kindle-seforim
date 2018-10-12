@@ -14,14 +14,15 @@ To download just the finished ebooks [click on releases](https://github.com/ypar
 
 ## TODO
 - add more seforim.
-- add makefile
 
 ## Setup
 - download the html version of [toratemetfreeware](http://www.toratemetfreeware.com/?dbases;1;) and extract to the `source` folder.
 - you may need to run `git submodules init` and `git submodules update` to get the submodule libraries.
-- run `sort_files.sh` to sort into `sorted`
-- run the scripts to parse the html and save to `intermediate` then convert the html to a kindle ebook (.azw3) in `output`
+- run `make sort` to sort into `sorted`
 
+##Usage
+- run the scripts using `make script_name` for example `make rambam` to parse the html and save to `intermediate` then convert the html to a kindle ebook (.azw3) in `output`
+- to zip uup the completed files for release `make release`
 
 ## Acknowledgements
 kindle-seforim uses the following libraries:
