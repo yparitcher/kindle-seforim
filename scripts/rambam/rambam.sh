@@ -44,9 +44,10 @@ convertsefer() {
 }
 
 convertthreechapter() {
+	version="$3"
 	filename="$1"
 	output="$(basename -s .html $filename)"
-	title="רמבם_$output"
+	title="רמבם_$version_$output"
 	fileout="$baseout/$2"
 	if [[ ! -d "$fileout" ]]
 		then mkdir -p $fileout
@@ -92,10 +93,20 @@ for i in $source/*.txt; do
 done
 
 sed -i -e 's#<! end perek>##' "$intermediate/0028_RAMBAM-OVERVIEW_L0.txt"
-printf "<! end perek>\n<! end perek>\n" >> "$intermediate/0020_RAMBAM-POSITIVE_MITZVAH_L0.txt"
-printf "<! end perek>\n<! end perek>\n" >> "$intermediate/0024_RAMBAM-NEGITIVE_MITZVAH_L0.txt"
-printf "<! end perek>\n<! end perek>\n<! end perek>\n" >> "$intermediate/0028_RAMBAM-OVERVIEW_L0.txt"
-printf "<! end perek>\n<! end perek>\n<! end perek>\n" >> "$intermediate/0010_RAMBAM-MRG_L0.txt"
+sed -i -e 's#\(אלהי ישראל:\)  #</p>\1\n<! end perek>\n<p class="sefer">#' -e 's#\(בין אחרון:\) #</p>\1\n<! end perek>\n<p class="sefer">#' "$intermediate/0010_RAMBAM-MRG_L0.txt"
+printf "<! end perek>\n" >> "$intermediate/0010_RAMBAM-MRG_L0.txt"
+
+sed -i -e 's#\(<p class="law"><b class="lawt"> פד)</b>\)#<! end perek>\n\1#' -e 's#\(<p class="law"><b class="lawt"> קסז)</b>\)#<! end perek>\n\1#' "$intermediate/0020_RAMBAM-POSITIVE_MITZVAH_L0.txt"
+
+sed -i -e 's#\(<p class="law"><b class="lawt"> קכג)</b>\)#<! end perek>\n\1#' -e 's#\(<p class="law"><b class="lawt"> רמה)</b>\)#<! end perek>\n\1#' "$intermediate/0024_RAMBAM-NEGITIVE_MITZVAH_L0.txt"
+
+sed -i -e 's#\(ושמונה מצוות לא תעשה.  </p>\)#\1\n<! end perek>#' -e 's#\(ותשע עשרה מצוות לא תעשה.  </p>\)#\1\n<! end perek>#' "$intermediate/0028_RAMBAM-OVERVIEW_L0.txt"
+printf "<! end perek>\n" >> "$intermediate/0028_RAMBAM-OVERVIEW_L0.txt"
+
+#printf "<! end perek>\n<! end perek>\n" >> "$intermediate/0020_RAMBAM-POSITIVE_MITZVAH_L0.txt"
+#printf "<! end perek>\n<! end perek>\n" >> "$intermediate/0024_RAMBAM-NEGITIVE_MITZVAH_L0.txt"
+
+
 
 $scripts/rambam_sefer.awk $intermediate/*.txt;
 
@@ -105,6 +116,17 @@ fi
 
 $scripts/rambam_three_perek.awk -v "basefolder=$intermediate/three_perek" $intermediate/*.txt;
 
+#
+# one chapter modifications
+#
+sed -i -e '805d' "$intermediate/0040_RAMBAM_AHAVA_L1.txt"
+sed -i -e 's#\(סליק נוסח ההגדה  </p>\)#\1\n<! end perek>#' "$intermediate/0050_RAMBAM-ZMANIM_L1.txt"
+
+if [[ ! -d "$intermediate/one_perek" ]]
+	then mkdir -p "$intermediate/one_perek"
+fi
+
+$scripts/rambam_one_perek.awk -v "basefolder=$intermediate/one_perek" $intermediate/*.txt;
 
 counter=1
 for i in $intermediate/*.html; do
@@ -112,6 +134,12 @@ for i in $intermediate/*.html; do
 #	convertfont $i "$(printf "%02d" $counter)";
 	counter=$(($counter+1));
 done;
+
 for i in $intermediate/three_perek/*.html; do
-	convertthreechapter $i "threeperek"
+	convertthreechapter $i "threeperek" "ג-פ"
+	qwertyu=1
+done;
+
+for i in $intermediate/one_perek/*.html; do
+	convertthreechapter $i "oneperek" "פ-א"
 done;

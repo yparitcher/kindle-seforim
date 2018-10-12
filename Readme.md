@@ -10,7 +10,7 @@ To download just the finished ebooks [click on releases](https://github.com/ypar
 
 ## Status
 - Shnaim Mikra
-- Rambam
+- Rambam by sefer, 3 & 1 perek
 
 ## TODO
 - add more seforim.
