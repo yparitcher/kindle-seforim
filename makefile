@@ -1,6 +1,6 @@
 
 SHELL=/bin/bash
-SEFORIM=shnaim_mikra rambam
+SEFORIM=shnaim_mikra rambam chumash_rashi
 SCRIPTS=./scripts/
 
 .PHONY: default all sort release $(SEFORIM)
@@ -20,4 +20,7 @@ shnaim_mikra:
 
 rambam:
 	$(SCRIPTS)rambam/rambam.bash
+
+chumash_rashi:
+	$(SCRIPTS)chumash_rashi/chumash_rashi.bash
 

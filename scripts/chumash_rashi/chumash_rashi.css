@@ -1,0 +1,10 @@
+﻿body {
+	direction: rtl;
+	text-align: right;
+	}
+.posuk, .rashih {
+	font-size: large;
+	}
+.rashi {
+	font-size: medium;
+	}
