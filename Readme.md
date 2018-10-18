@@ -1,5 +1,5 @@
 # kindle-seforim
-kindle-seforim is a collection of seforim in kindle ebook format, and in epub format, based on [toratemetfreeware](http://www.toratemetfreeware.com) and [Orayta-Books](https://github.com/MosheWagner/Orayta-Books).
+kindle-seforim is a collection of seforim in kindle ebook format, and in epub format, based on [Orayta-Books](https://github.com/MosheWagner/Orayta-Books).
 
 This is a work in progress so there will be updates and changes coming.
 
@@ -10,25 +10,22 @@ To download just the finished ebooks [click on releases](https://github.com/ypar
 
 ## Status
 - Shnaim Mikra
-- Rambam by sefer, 3 & 1 perek
+- Rambam with marks for 3 chapter
 
 ## TODO
 - add more seforim.
 
 ## Setup
-- download the html version of [toratemetfreeware](http://www.toratemetfreeware.com/?dbases;1;) and extract to the `source` folder.
+- clone the reository.
 - you may need to run `git submodules init` and `git submodules update` to get the submodule libraries.
-- run `make sort` to sort into `sorted`
 
 ##Usage
 - run the scripts using `make script_name` for example `make rambam` to parse the html and save to `intermediate` then convert the html to a kindle ebook (.azw3) in `output`
-- to zip uup the completed files for release `make release`
+- to zip up the completed files for release `make release`
 
 ## Acknowledgements
 kindle-seforim uses the following libraries:
 
-- [toratemetfreeware](http://www.toratemetfreeware.com) source of the seforim.
-licensed under the CC BY-NC-SA 2.5 license
 - [Orayta-Books](https://github.com/MosheWagner/Orayta-Books) source of the seforim.
 licensed under the CC and or GDPL licenses
 - [wikisource](https://he.wikisource.org) source of the seforim.

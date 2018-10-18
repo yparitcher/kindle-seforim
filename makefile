@@ -16,8 +16,8 @@ release:
 	$(SCRIPTS)releases.bash
 
 shnaim_mikra:
-	cd $(SCRIPTS) && ./shnaim-mikra/shnaim_mikra
+	$(SCRIPTS)shnaim_mikra/shnaim_mikra.bash
 
 rambam:
-	$(SCRIPTS)rambam/rambam.sh
+	$(SCRIPTS)rambam/rambam.bash
 
