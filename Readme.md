@@ -11,6 +11,8 @@ To download just the finished ebooks [click on releases](https://github.com/ypar
 ## Status
 - Shnaim Mikra
 - Rambam with marks for 3 chapter
+- Chumash with Rashi
+- Nach
 
 ## TODO
 - add more seforim.

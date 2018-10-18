@@ -1,16 +1,13 @@
 
 SHELL=/bin/bash
-SEFORIM=shnaim_mikra rambam chumash_rashi
+SEFORIM=shnaim_mikra rambam chumash_rashi nach
 SCRIPTS=./scripts/
 
 .PHONY: default all sort release $(SEFORIM)
 
 default: $(SEFORIM) release
 
-all: sort $(SEFORIM) release
-
-sort:
-	$(SCRIPTS)sort_files.sh
+all: $(SEFORIM) release
 
 release:
 	$(SCRIPTS)releases.bash
@@ -23,4 +20,7 @@ rambam:
 
 chumash_rashi:
 	$(SCRIPTS)chumash_rashi/chumash_rashi.bash
+
+nach:
+	$(SCRIPTS)nach/nach.bash
 
