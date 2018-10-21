@@ -6,7 +6,7 @@ This is a work in progress so there will be updates and changes coming.
 Please file an issue if there are any mistakes or if you need a different format or sefer.
 
 ## Ebooks
-To download just the finished ebooks [click on releases](https://github.com/yparitcher/kindle-seforim/releases/latest). to use the embedded font make sure that `use publisher font` is set to on in your kindle
+To download just the finished ebooks [yparitcher.me](https://yparitcher.me).
 
 ## Status
 - Shnaim Mikra
