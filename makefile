@@ -3,11 +3,11 @@ SHELL=/bin/bash
 SEFORIM=shnaim_mikra rambam chumash_rashi nach
 SCRIPTS=./scripts/
 
-.PHONY: default all sort release $(SEFORIM)
+.PHONY: default all sort release apnx $(SEFORIM)
 
-default: $(SEFORIM) release
+default: $(SEFORIM) apnx release
 
-all: $(SEFORIM) release
+all: $(SEFORIM) apnx release
 
 release:
 	$(SCRIPTS)releases.bash
@@ -23,4 +23,6 @@ chumash_rashi:
 
 nach:
 	$(SCRIPTS)nach/nach.bash
-
+	
+apnx:
+	calibre-debug $(SCRIPTS)apnx.py

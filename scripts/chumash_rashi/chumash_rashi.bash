@@ -38,7 +38,7 @@ if [[ ! -d "$intermediate/rashi" ]]; then mkdir -p "$intermediate/rashi"; fi;
 
 for i in $source$rashisource/*.txt; do
 	dest=$(basename $i)
-	sed -e 's#{{[^{}]\{1,2\}}} ##g' -e 's#<b>#<span class="rashih">#g' -e 's#</b>#</span>#g' $i > $intermediate/rashi/$dest;
+	sed -e 's#{{[^{}]\{1,2\}}} ##g' -e 's#<b>#<span class="rashih">#g' -e 's#</b># - </span>#g' $i > $intermediate/rashi/$dest;
 done
 
 for i in $intermediate/rashi/*.txt; do
@@ -53,17 +53,17 @@ for i in $intermediate/*.txt; do
 done
 
 
-if [[ ! -d "$output/kindle_font" ]]; then mkdir -p "$output/kindle_font"; fi;
+#if [[ ! -d "$output/kindle_font" ]]; then mkdir -p "$output/kindle_font"; fi;
 if [[ ! -d "$output/kindle" ]]; then mkdir -p "$output/kindle"; fi;
 
 if [[ ! -d "$output/epub" ]]; then mkdir -p "$output/epub"; fi;
-if [[ ! -d "$output/epub_font" ]]; then mkdir -p "$output/epub_font"; fi;
+#if [[ ! -d "$output/epub_font" ]]; then mkdir -p "$output/epub_font"; fi;
 
 for i in $intermediate/*.html; do
 	name=$(basename --suffix=.html $i)
 	convertsefer "$i" "$output/kindle/" "$name" "azw3" &
-	convertsefer "$i" "$output/kindle_font/" "$name" "azw3" "embed"  &
+#	convertsefer "$i" "$output/kindle_font/" "$name" "azw3" "embed"  &
 	convertsefer "$i" "$output/epub/" "$name" "epub" &
-	convertsefer "$i" "$output/epub_font/" "$name" "epub" "embed" &
+#	convertsefer "$i" "$output/epub_font/" "$name" "epub" "embed" &
 	wait
 done

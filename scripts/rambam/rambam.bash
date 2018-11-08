@@ -79,9 +79,9 @@ $scripts/rambam_one_perek.awk -v "basefolder=$intermediate/one_perek" $intermedi
 # make output directories
 #####
 if [[ ! -d "$baseout" ]]; then mkdir -p $baseout; fi
-if [[ ! -d "$fontbaseout" ]]; then mkdir -p $fontbaseout; fi
+#if [[ ! -d "$fontbaseout" ]]; then mkdir -p $fontbaseout; fi
 if [[ ! -d "$epubbaseout" ]]; then mkdir -p $epubbaseout; fi
-if [[ ! -d "$epubfontbaseout" ]]; then mkdir -p $epubfontbaseout; fi
+#if [[ ! -d "$epubfontbaseout" ]]; then mkdir -p $epubfontbaseout; fi
 
 
 #####
@@ -97,9 +97,9 @@ for i in $intermediate/*.html; do
 	output2="$(printf "%02d" $counter)_$(echo $title2 | sed -e 's/ /_/g' )"
 
 	convertsefer $i "$output2" "azw3" "$baseout" "$title2" &
-	convertsefer $i "$output2" "azw3" "$fontbaseout" "$title2" "embed" &
+#	convertsefer $i "$output2" "azw3" "$fontbaseout" "$title2" "embed" &
 	convertsefer $i "$output2" "epub" "$epubbaseout" "$title2" &
-	convertsefer $i "$output2" "epub" "$epubfontbaseout" "$title2" "embed" &
+#	convertsefer $i "$output2" "epub" "$epubfontbaseout" "$title2" "embed" &
 	counter=$(($counter+1));
 	wait
 done;
