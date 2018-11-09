@@ -1,0 +1,11 @@
+﻿body {
+	direction: rtl;
+	text-align: right;
+	}
+.rashih {
+	font-size: large;
+	font-weight: bold;
+	}
+.rashi {
+	font-size: 0.8em;
+	}

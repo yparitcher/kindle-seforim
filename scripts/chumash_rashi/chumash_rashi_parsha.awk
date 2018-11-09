@@ -13,7 +13,7 @@ BEGIN {
 		parsha = gensub(/ *([^ <][^<]*[^ <]) *<\/h2>/, "\\1", 1, $1);
 		gsub(/ /, "_", parsha)
 		out = basefolder "/" parsha ".html"
-		print RT $0 > out; 
+		print type $0 > out;
 		
 	}
 	type = RT;

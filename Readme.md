@@ -13,6 +13,7 @@ To download just the finished ebooks [yparitcher.me](https://yparitcher.me).
 - Rambam with marks for 3 chapter
 - Chumash with Rashi
 - Nach
+- Talmud with Rashi
 
 ## TODO
 - add more seforim.
