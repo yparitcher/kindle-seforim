@@ -1,0 +1,19 @@
+h2 {
+	text-align: center;
+	direction: rtl;
+}
+h3 {
+	text-align: right;
+	direction: rtl;
+}
+.he {
+	direction: rtl;
+	text-align: justify;
+    text-align-last: right;
+	}
+.en {
+	direction: ltr;
+	text-align: justify;
+    text-align-last: left;
+	}
+

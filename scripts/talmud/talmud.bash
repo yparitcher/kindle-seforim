@@ -27,7 +27,7 @@ convertsefer() {
 }
 
 
-if [[ ! -d "$intermediate/talmud" ]]; then mkdir -p "$intermediate/mikra"; fi;
+if [[ ! -d "$intermediate/mikra" ]]; then mkdir -p "$intermediate/mikra"; fi;
 
 for i in $source$mikrasource/*.txt; do
 	dest=$(basename $i)

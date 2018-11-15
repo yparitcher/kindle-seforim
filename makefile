@@ -1,6 +1,6 @@
 
 SHELL=/bin/bash
-SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud
+SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud Steinsaltz_talmud_H_E
 SCRIPTS=./scripts/
 
 .PHONY: default all sort release apnx $(SEFORIM)
@@ -29,6 +29,9 @@ nach:
 	
 talmud:
 	$(SCRIPTS)talmud/talmud.bash
+
+Steinsaltz_talmud_H_E:
+	$(SCRIPTS)Steinsaltz_talmud_H_E/Steinsaltz_talmud_H_E.bash
 
 apnx:
 	calibre-debug $(SCRIPTS)apnx.py

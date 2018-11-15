@@ -1,5 +1,5 @@
 # kindle-seforim
-kindle-seforim is a collection of seforim in kindle ebook format, and in epub format, based on [Orayta-Books](https://github.com/MosheWagner/Orayta-Books).
+kindle-seforim is a collection of seforim in kindle ebook format, and in epub format, based on [Orayta-Books](https://github.com/MosheWagner/Orayta-Books) & [sefaria](https://www.sefaria.org).
 
 This is a work in progress so there will be updates and changes coming.
 
@@ -14,6 +14,7 @@ To download just the finished ebooks [yparitcher.me](https://yparitcher.me).
 - Chumash with Rashi
 - Nach
 - Talmud with Rashi
+- Steinsaltz talmud hebrew/english
 
 ## TODO
 - add more seforim.
@@ -33,6 +34,8 @@ kindle-seforim uses the following libraries:
 licensed under the CC and or GDPL licenses
 - [wikisource](https://he.wikisource.org) source of the seforim.
 licensed under the CC 3.0 license
+- [sefaria](https://www.sefaria.org) source of the seforim.
+licensed under the CC license
 - [calibre](https://calibre-ebook.com/) ebook conversion library.
 Copyright (c) Kovid Goyal
 licensed under the GNU GPL v3 license
@@ -42,7 +45,7 @@ Thank you
 ## License
 kindle-seforim is Copyright (c) 2018 [Yparitcher](https://github.com/yparitcher)
 
-ebooks licensed under [CC BY-NC-SA 2.5](https://creativecommons.org/licenses/by-nc-sa/2.5/legalcode)
+ebooks licensed under the authors license mostly [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/2.5/legalcode)
 
 for font licenses look in the fonts folder
 
