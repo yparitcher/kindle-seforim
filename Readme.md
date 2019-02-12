@@ -6,7 +6,7 @@ This is a work in progress so there will be updates and changes coming.
 Please file an issue if there are any mistakes or if you need a different format or sefer.
 
 ## Ebooks
-To download just the finished ebooks [yparitcher.me](https://yparitcher.me).
+To download just the finished ebooks [kindleseforim.paritcher.com](https://kindleseforim.paritcher.com).
 
 ## Status
 - Shnaim Mikra
