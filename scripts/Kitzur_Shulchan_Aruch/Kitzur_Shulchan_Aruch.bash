@@ -4,7 +4,7 @@
 #####
 # directories
 #####
-startpoint="Steinsaltz_talmud_H_E"
+startpoint="Kitzur_Shulchan_Aruch"
 scripts="./scripts/$startpoint"
 css="$scripts/$startpoint.css"
 intermediate="./intermediate/$startpoint"
@@ -18,7 +18,7 @@ convertsefer() {
 	folderout=$2
 	fileout=$3
 	ext=$4
-	args=("$input" "$folderout$fileout.$ext" --subset-embedded-fonts --extra-css "$css" --chapter '//*[name()="h2" or name()="h3"]' --chapter-mark "none" --language "he" --base-font-size "14" --authors 'תלמוד' --toc-title "תוכן ענינים" --comments 'The William Davidson digital edition of the Koren Noé Talmud, with commentary by Rabbi Adin Steinsaltz Even-Israel via sefaria under the CC BY-NC 4.0' --sr1-replace '<br>' --page-breaks-before '/')
+	args=("$input" "$folderout$fileout.$ext" --subset-embedded-fonts --extra-css "$css" --chapter '//*[name()="h2"]' --chapter-mark "none" --language "he" --base-font-size "16" --authors 'הרב שלמה גאנצפריד' --toc-title "תוכן ענינים" --comments 'The Kitzur Shulchan Aruch by Rabbi Shlomo Ganzfried, via sefaria & http://www.toratemetfreeware.com under the CC 2.5' --sr1-replace '<br>' --page-breaks-before '/')
 	if [[ $ext == "epub" ]]; then args+=(--no-default-epub-cover); fi;
 	if [[ $5 == "embed" ]]; then args+=(--embed-font-family "SBL Hebrew"); fi;
 	ebook-convert "${args[@]}"
@@ -26,18 +26,9 @@ convertsefer() {
 
 
 if [[ ! -d "$intermediate" ]]; then mkdir -p "$intermediate"; fi;
-
-counter=1
-while read i; do
-	dest="$(printf '%02d' $counter)_$i"
-	dest="${dest// /_}"
-	if [[ ! -f "$intermediate/$dest.json" ]]; then
-		wget -O "$intermediate/$dest.json" "https://www.sefaria.org/api/texts/$i?pad=0";
+	if [[ ! -f "$intermediate/$startpoint.json" ]]; then
+		wget -O "$intermediate/$startpoint.json" "https://www.sefaria.org/api/texts/$startpoint?pad=0";
 	fi;
-	counter=$(($counter+1));
-done << EOF
-$(node $scripts/index.js "$source/index.json")
-EOF
 
 for i in $intermediate/*.json; do
 	dest="$(basename --suffix .json $i)"
