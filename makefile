@@ -15,6 +15,9 @@ all:
 release:
 	$(SCRIPTS)releases.bash
 
+apnx:
+	calibre-debug $(SCRIPTS)apnx.py
+
 shnaim_mikra:
 	$(SCRIPTS)shnaim_mikra/shnaim_mikra.bash
 
@@ -42,5 +45,5 @@ Arukh_HaShulchan:
 Shulchan_Arukh:
 	$(SCRIPTS)Shulchan_Arukh/Shulchan_Arukh.bash
 
-apnx:
-	calibre-debug $(SCRIPTS)apnx.py
+Mishnah:
+	$(SCRIPTS)Mishnah/Mishnah.bash
