@@ -36,6 +36,9 @@ Steinsaltz_talmud_H_E:
 Kitzur_Shulchan_Aruch:
 	$(SCRIPTS)Kitzur_Shulchan_Aruch/Kitzur_Shulchan_Aruch.bash
 
+Arukh_HaShulchan:
+	$(SCRIPTS)Arukh_HaShulchan/Arukh_HaShulchan.bash
+
 Shulchan_Arukh:
 	$(SCRIPTS)Shulchan_Arukh/Shulchan_Arukh.bash
 
