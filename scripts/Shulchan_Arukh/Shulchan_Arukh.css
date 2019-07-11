@@ -1,0 +1,14 @@
+﻿body {
+	direction: rtl;
+	text-align: right;
+	}
+h2, h3 {
+	text-align: right;
+	direction: rtl;
+}
+.seif {
+	font-size: large;
+	}
+.seifh {
+	font-size: medium;
+	}

@@ -36,5 +36,8 @@ Steinsaltz_talmud_H_E:
 Kitzur_Shulchan_Aruch:
 	$(SCRIPTS)Kitzur_Shulchan_Aruch/Kitzur_Shulchan_Aruch.bash
 
+Shulchan_Arukh:
+	$(SCRIPTS)Shulchan_Arukh/Shulchan_Arukh.bash
+
 apnx:
 	calibre-debug $(SCRIPTS)apnx.py
