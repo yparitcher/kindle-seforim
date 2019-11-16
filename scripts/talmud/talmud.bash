@@ -20,7 +20,7 @@ convertsefer() {
 	fileout=$3
 	title=$(echo $fileout | sed -e 's/_/ /g' )
 	ext=$4
-	args=("$input" "$folderout$fileout.$ext" --subset-embedded-fonts --extra-css "$css" --chapter '//*[@class="perekh"]' --chapter-mark "pagebreak" --start-reading-at '//*[@class="seferh"]' --language "he" --base-font-size "16" --title "$title" --authors 'חומש רשי' --level1-toc '//*[@class="perekh"]' --level2-toc '//*[@class="dafh"]' --toc-title "תוכן ענינים")
+	args=("$input" "$folderout$fileout.$ext" --subset-embedded-fonts --extra-css "$css" --chapter '//*[@class="perekh"]' --chapter-mark "pagebreak" --start-reading-at '//*[@class="seferh"]' --language "he" --base-font-size "16" --title "$title" --authors 'תלמוד' --level1-toc '//*[@class="perekh"]' --level2-toc '//*[@class="dafh"]' --toc-title "תוכן ענינים")
 	if [[ $ext == "epub" ]]; then args+=(--no-default-epub-cover); fi;
 	if [[ $5 == "embed" ]]; then args+=(--embed-font-family "SBL Hebrew"); fi;
 	ebook-convert "${args[@]}"
