@@ -1,6 +1,6 @@
 
 SHELL=/bin/bash
-SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud Steinsaltz_talmud_H_E
+SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud Steinsaltz_talmud_H_E Kitzur_Shulchan_Aruch Arukh_HaShulchan Shulchan_Arukh Mishnah gmara_nocha
 SCRIPTS=./scripts/
 
 .PHONY: default all sort release apnx $(SEFORIM)
@@ -47,3 +47,6 @@ Shulchan_Arukh:
 
 Mishnah:
 	$(SCRIPTS)Mishnah/Mishnah.bash
+
+gmara_nocha:
+	$(SCRIPTS)gmara_nocha/gmara_nocha.bash
