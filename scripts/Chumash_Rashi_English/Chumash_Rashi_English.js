@@ -13,7 +13,7 @@ for (let x=0; x<jsonData.he.length; x++) {
 				if (jsonData.alts[x] != undefined && jsonData.alts[x][i] != undefined && jsonData.alts[x][i].whole ){
 					count = (parseInt(count) + 1).toString();
 					fs.writeFileSync(process.argv[6], count);
-					file = directory + count.padStart(2, "0") + "_" + jsonData.alts[x][i]["en"][0] + ".html";
+					file = directory + count.padStart(2, "0") + "_" + jsonData.alts[x][i]["en"][0].replace(/ /g, "_") + ".html";
 					fs.writeFileSync(file, "<title>" + jsonData.alts[x][i]["he"][0] + "</title>\n");
 					fs.appendFileSync(file, "<h2>" + jsonData.alts[x][i]["he"][0] + "</h2>\n");
 					fs.appendFileSync(file, "<h3>" + "פרק " + gematria(x+1) + "</h3>\n");
