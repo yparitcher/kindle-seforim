@@ -1,0 +1,19 @@
+h2 {
+	text-align: center;
+	direction: rtl;
+}
+h3 {
+	text-align: right;
+	direction: rtl;
+}
+.talmud {
+	direction: rtl;
+	text-align: justify;
+    text-align-last: right;
+	}
+.biur {
+	direction: ltr;
+	text-align: justify;
+    text-align-last: left;
+	}
+
