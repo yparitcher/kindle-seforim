@@ -1,0 +1,19 @@
+h2 {
+	text-align: center;
+	direction: rtl;
+}
+h3 {
+	text-align: right;
+	direction: rtl;
+}
+.chumash .rashi {
+	direction: rtl;
+	text-align: justify;
+    text-align-last: right;
+	}
+.chumashE .rashiE{
+	direction: ltr;
+	text-align: justify;
+    text-align-last: left;
+	}
+
