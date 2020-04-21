@@ -6,14 +6,9 @@ h3 {
 	text-align: right;
 	direction: rtl;
 }
-.talmud {
+.talmud .biur {
 	direction: rtl;
 	text-align: justify;
     text-align-last: right;
-	}
-.biur {
-	direction: ltr;
-	text-align: justify;
-    text-align-last: left;
 	}
 
