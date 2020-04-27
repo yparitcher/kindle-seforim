@@ -1,3 +1,6 @@
+body {
+	direction: rtl;
+}
 h2 {
 	text-align: center;
 	direction: rtl;
@@ -10,5 +13,5 @@ h3 {
 	direction: rtl;
 	text-align: justify;
     text-align-last: right;
-	}
+}
 
