@@ -1,0 +1,27 @@
+﻿body {
+	direction: rtl;
+	text-align: justify;
+	text-align-last: auto;
+}
+h2 {
+	direction: rtl;
+}
+h3 {
+	text-align: right;
+	direction: rtl;
+}
+.seif {
+	font-weight: bold;
+	margin-top: .35em;
+}
+.seifh, .pirushh {
+	font-size: .5em;
+	vertical-align: 30%;
+}
+.hagah {
+	font-weight: normal;
+}
+.ph {
+	font-weight: bold;
+}
+
