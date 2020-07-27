@@ -1,14 +1,16 @@
 ﻿body {
 	direction: rtl;
+	text-align: justify;
+	text-align-last: auto;
+}
+h3 {
 	text-align: right;
-	}
-h2, h3 {
-	text-align: right;
-	direction: rtl;
 }
 .seif {
-	font-size: large;
-	}
+	margin-top: .35em;
+}
 .seifh {
-	font-size: medium;
-	}
+	font-weight: bold;
+	font-size: .5em;
+	vertical-align: 30%;
+}

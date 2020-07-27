@@ -15,10 +15,10 @@ for (let x=0; x<jsonData.he.length; x++) {
 		if (i==0) {
 			var index = content.indexOf('</b>');
 			if (index==-1){index=0;}else{index+=4;}
-			console.log( "<h3>{" + gematria(x+1) + "} " + content.substring(0, index ) + "</h3>");
-			console.log('<div class="seif"><span class="seifh">{'  + seif + '} </span>' + content.substring(index) + "</div>");
+			console.log( "<h3>" + gematria(x+1) + ") " + content.substring(0, index ) + "</h3>");
+			console.log('<div class="seif"><span class="seifh">'  + seif + ') </span>' + content.substring(index) + "</div>");
 		} else {
-			console.log('<div class="seif"><span class="seifh">{'  + seif + '} </span>' + content + "</div>");
+			console.log('<div class="seif"><span class="seifh">'  + seif + ') </span>' + content + "</div>");
 		}
 	}
 }
