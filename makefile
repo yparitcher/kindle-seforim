@@ -2,7 +2,7 @@
 SHELL=/bin/bash
 SCRIPTS=./scripts/
 
-SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud Steinsaltz_talmud_H_E Kitzur_Shulchan_Aruch Arukh_HaShulchan Shulchan_Arukh Mishnah gmara_nocha Steinsaltz_talmud_Hebrew Chumash_Rashi_English Shulchan_Aruch_Harav Mishnah_Berurah
+SEFORIM=shnaim_mikra rambam chumash_rashi nach talmud Steinsaltz_talmud_H_E Kitzur_Shulchan_Aruch Arukh_HaShulchan Shulchan_Arukh Mishnah gmara_nocha Steinsaltz_talmud_Hebrew Chumash_Rashi_English Shulchan_Aruch_Harav Mishnah_Berurah Jastrow
 
 .PHONY: default all sort release apnx $(SEFORIM)
 
