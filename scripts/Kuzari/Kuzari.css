@@ -1,0 +1,9 @@
+﻿body {
+	direction: rtl;
+	text-align: right;
+	}
+h2 {
+	text-align: right;
+	direction: rtl;
+}
+
